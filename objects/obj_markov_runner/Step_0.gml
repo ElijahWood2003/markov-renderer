@@ -1,0 +1,1 @@
+/// @description Checking stochastic matrix
