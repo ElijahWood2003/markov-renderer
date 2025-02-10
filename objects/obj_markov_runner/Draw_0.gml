@@ -4,13 +4,9 @@
 //draw_text_color(CENX + TEXT_OFFSET_X, CENY - RAD + TEXT_OFFSET_Y, S[0], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)
 //draw_circle_color(CENX, CENY, 10, NODE_COL, NODE_COL, false)
 
-// draw background on the right
-draw_set_alpha(MENU_ALPHA)
-draw_rectangle_color(room_width / 2, 0, room_width, room_height, MENU_COL, MENU_COL, MENU_COL, MENU_COL, false)
 
-
-draw_set_alpha(1)
 draw_set_color(c_black)
+
 // draw edges first; connects each node for each node
 for(var i = 0; i < array_length(P); i++){
 	// center of node
@@ -28,10 +24,11 @@ for(var i = 0; i < array_length(P); i++){
 			
 			// account for radius of circle / offset
 			var dir = darctan2((nodey - rec_nodey), (nodex - rec_nodex))
-			var ix = nodex - dcos(dir)*(NODE_RAD + EDGE_OFFSET)
-			var iy = nodey - dsin(dir)*(NODE_RAD + EDGE_OFFSET)
-			var rx = rec_nodex + dcos(dir)*(NODE_RAD + EDGE_OFFSET)
-			var ry = rec_nodey + dsin(dir)*(NODE_RAD + EDGE_OFFSET)
+			var ix = nodex - dcos(dir)*(node_rad + EDGE_OFFSET)
+			var iy = nodey - dsin(dir)*(node_rad + EDGE_OFFSET)
+			var rx = rec_nodex + dcos(dir)*(node_rad + EDGE_OFFSET)
+			var ry = rec_nodey + dsin(dir)*(node_rad + EDGE_OFFSET)
+			//draw_curve(ix, iy, rx, ry, dir, 30)
 			draw_arrow(ix, iy, rx, ry, ARROW_WIDTH)
 			
 			// draw text indicating probability perpendicular to edge
@@ -53,12 +50,12 @@ for(var i = 0; i < array_length(P); i++){
 	}
 }
 
-// next draw nodes equally spaced along circle
+// next draw nodes based on their nodex and nodey
 for(var i = 0; i < array_length(S); i++){
 	var nodex = node_cords[i][0]
 	var nodey = node_cords[i][1]
-	draw_circle_color(nodex, nodey, NODE_RAD, NODE_COL, NODE_COL, false)
-	draw_circle_color(nodex, nodey, INNER_NODE_RAD, INNER_NODE_COL, INNER_NODE_COL, false)
+	draw_circle_color(nodex, nodey, node_rad, NODE_COL, NODE_COL, false)
+	draw_circle_color(nodex, nodey, inner_node_rad, INNER_NODE_COL, INNER_NODE_COL, false)
 	draw_text_color(nodex + TEXT_OFFSET_X, nodey + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
 
 	/*
@@ -69,3 +66,4 @@ for(var i = 0; i < array_length(S); i++){
 	draw_text_color(tx + TEXT_OFFSET_X, ty + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
 */
 }
+

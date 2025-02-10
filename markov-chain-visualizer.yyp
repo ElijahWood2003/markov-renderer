@@ -37,6 +37,7 @@
     {"id":{"name":"obj_markov_runner","path":"objects/obj_markov_runner/obj_markov_runner.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"check_stochastic","path":"scripts/check_stochastic/check_stochastic.yy",},},
+    {"id":{"name":"draw_curve","path":"scripts/draw_curve/draw_curve.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
