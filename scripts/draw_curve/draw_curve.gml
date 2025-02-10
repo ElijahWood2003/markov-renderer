@@ -19,6 +19,7 @@ function draw_curve(x1, y1, x2, y2, start_angle, detail){
  
     dist = point_distance(x1,y1,x2,y2);
     dist_ang = angle_difference(point_direction(x1,y1,x2,y2),start_angle);
+	//dist_ang = start_angle
     inc = (1/detail);
  
     draw_primitive_begin(pr_linestrip);

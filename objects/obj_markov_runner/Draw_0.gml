@@ -28,11 +28,21 @@ for(var i = 0; i < array_length(P); i++){
 			var iy = nodey - dsin(dir)*(node_rad + EDGE_OFFSET)
 			var rx = rec_nodex + dcos(dir)*(node_rad + EDGE_OFFSET)
 			var ry = rec_nodey + dsin(dir)*(node_rad + EDGE_OFFSET)
-			//draw_curve(ix, iy, rx, ry, dir, 30)
+			//draw_curve(ix, iy, rx, ry, degtorad(dir -90), 30)
 			draw_arrow(ix, iy, rx, ry, ARROW_WIDTH)
 			
-			// draw text indicating probability perpendicular to edge
-			draw_text((rx - ix)/2 + ix, (ry - iy)/2 + iy, P[i][i])
+				// make edge weights perpendicular to direction
+			var text_dir = dir - 90
+			var abs_text_dir = abs(text_dir);
+			if(text_dir < -180){
+				abs_text_dir = abs(text_dir + 180) - 180
+			}
+				// subtract by size of text (3 * length of string, 6)
+			// straight down should be 360, straight up should be 0
+			// closer we are to 360 the more we want to offset the text
+			var text_offx = dcos(text_dir) * EDGE_TEXT_OFFSET - (abs_text_dir / 180) * (5 * string_length(P[i][j]))
+			var text_offy = dsin(text_dir) * EDGE_TEXT_OFFSET - 6
+			draw_text((rx - ix)/2 + ix + text_offx, (ry - iy)/2 + iy + text_offy, P[i][j])
 			
 			/*
 			// center of recieving node
@@ -56,6 +66,7 @@ for(var i = 0; i < array_length(S); i++){
 	var nodey = node_cords[i][1]
 	draw_circle_color(nodex, nodey, node_rad, NODE_COL, NODE_COL, false)
 	draw_circle_color(nodex, nodey, inner_node_rad, INNER_NODE_COL, INNER_NODE_COL, false)
+	
 	draw_text_color(nodex + TEXT_OFFSET_X, nodey + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
 
 	/*

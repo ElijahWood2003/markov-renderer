@@ -2,9 +2,9 @@
 	
 // initializing arrays	
 S = [1, 2, 3, 4]
-P = [[0, 0.3, 0.4],
+P = [[0, 0, 0.2],
 	[0, 0, 0],
-	[0, 0, 0]
+	[0.4, 0, 0]
 	]
 
 
@@ -25,6 +25,7 @@ EDGE_WIDTH = 3
 ARROW_WIDTH = 10
 
 EDGE_OFFSET = 5
+EDGE_TEXT_OFFSET = 15
 
 // starting positions of nodes
 node_cords = []
