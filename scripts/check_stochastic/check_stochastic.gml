@@ -13,6 +13,9 @@ function check_stochastic(P){
 				return false
 			}
 		}
+		if(rsum != 1){
+			return false
+		}
 	}
 	
 	return true

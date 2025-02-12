@@ -24,38 +24,30 @@ for(var i = 0; i < array_length(P); i++){
 			
 			// account for radius of circle / offset
 			var dir = darctan2((nodey - rec_nodey), (nodex - rec_nodex))
-			var ix = nodex - dcos(dir)*(node_rad + EDGE_OFFSET)
-			var iy = nodey - dsin(dir)*(node_rad + EDGE_OFFSET)
-			var rx = rec_nodex + dcos(dir)*(node_rad + EDGE_OFFSET)
-			var ry = rec_nodey + dsin(dir)*(node_rad + EDGE_OFFSET)
+			var ix = nodex - dcos(dir)*(node_rad + EDGE_NODE_OFFSET)
+			var iy = nodey - dsin(dir)*(node_rad + EDGE_NODE_OFFSET)
+			var rx = rec_nodex + dcos(dir)*(node_rad + EDGE_NODE_OFFSET)
+			var ry = rec_nodey + dsin(dir)*(node_rad + EDGE_NODE_OFFSET)
+			
+			// make edges have an offset perpendicular to direction IFF there is an edge coming towards it
+			var edge_offx = dcos(dir - 90) * EDGE_OFFSET * (P[j][i] > 0)
+			var edge_offy = dsin(dir - 90) * EDGE_OFFSET * (P[j][i] > 0)
+			
+			
+			// make edge text perpendicular to direction
+			
+			// calculations based on single or double edges to get offset of x and y for edge text
+			var text_offx = (dsin(dir) * EDGE_TEXT_OFFSET + dsin(dir) * (9 / (1 + (P[j][i] == 0)) * string_length(P[i][j])) * (dir < 0) - abs(dcos(dir)) * (4 * string_length(P[i][j]))) * (P[j][i] >= 0)
+							//- ((P[j][i] == 0) * abs(dcos(dir)) * (4 * string_length(P[i][j])) - 4)
+			var text_offy = dcos(dir) * EDGE_TEXT_OFFSET + ((dir > 90) + (dir < -90)) * dcos(dir)*10 + (abs(dcos(dir)) * (dir < 90) * (dir > -90) * 13) * (P[j][i] > 0)
+			
 			//draw_curve(ix, iy, rx, ry, degtorad(dir -90), 30)
-			draw_arrow(ix, iy, rx, ry, ARROW_WIDTH)
+			draw_arrow(ix + edge_offx, iy + edge_offy, rx + edge_offx, ry + edge_offy, ARROW_WIDTH)
 			
-				// make edge weights perpendicular to direction
-			var text_dir = dir - 90
-			var abs_text_dir = abs(text_dir);
-			if(text_dir < -180){
-				abs_text_dir = abs(text_dir + 180) - 180
-			}
-				// subtract by size of text (3 * length of string, 6)
-			// straight down should be 360, straight up should be 0
-			// closer we are to 360 the more we want to offset the text
-			var text_offx = dcos(text_dir) * EDGE_TEXT_OFFSET - (abs_text_dir / 180) * (5 * string_length(P[i][j]))
-			var text_offy = dsin(text_dir) * EDGE_TEXT_OFFSET - 6
-			draw_text((rx - ix)/2 + ix + text_offx, (ry - iy)/2 + iy + text_offy, P[i][j])
+				
+			draw_text((rx - ix)/2 + ix + text_offx, (ry - iy)/2 + iy - text_offy - 10, P[i][j])
 			
-			/*
-			// center of recieving node
-			var jx = CENX + dcos(DIAM_DEG * j - 90*(array_length(S) > 2))*RAD
-			var jy = CENY + dsin(DIAM_DEG * j - 90*(array_length(S) > 2))*RAD
-			
-			// account for radius of circle / offset
-			// degree
-			var dir = darctan2((jy - iy), (jx - ix))
-			
-			draw_arrow(ix, iy, jx, jy, ARROW_WIDTH)
-			//draw_line_width_color(ix, iy, jx, jy, EDGE_WIDTH, NODE_COL, NODE_COL)
-			*/
+
 		}
 	}
 }
@@ -69,12 +61,5 @@ for(var i = 0; i < array_length(S); i++){
 	
 	draw_text_color(nodex + TEXT_OFFSET_X, nodey + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
 
-	/*
-	var tx = CENX + dcos(DIAM_DEG * i - 90*(array_length(S) > 2))*RAD
-	var ty = CENY + dsin(DIAM_DEG * i - 90*(array_length(S) > 2))*RAD
-	draw_circle_color(tx, ty, NODE_RAD, NODE_COL, NODE_COL, false)
-	draw_circle_color(tx, ty, INNER_NODE_RAD, INNER_NODE_COL, INNER_NODE_COL, false)
-	draw_text_color(tx + TEXT_OFFSET_X, ty + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
-*/
 }
 
