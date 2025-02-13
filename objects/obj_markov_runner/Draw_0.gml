@@ -37,9 +37,9 @@ for(var i = 0; i < array_length(P); i++){
 			// make edge text perpendicular to direction
 			
 			// calculations based on single or double edges to get offset of x and y for edge text
-			var text_offx = (dsin(dir) * EDGE_TEXT_OFFSET + dsin(dir) * (9 / (1 + (P[j][i] == 0)) * string_length(P[i][j])) * (dir < 0) - abs(dcos(dir)) * (4 * string_length(P[i][j]))) * (P[j][i] >= 0)
+			var text_offx = (dsin(dir) * EDGE_TEXT_OFFSET + dsin(dir) * (dir > 0) * (dir < 180) * 4 * (P[j][i] > 0) + dsin(dir) * (9 / (1 + (P[j][i] == 0)) * string_length(P[i][j])) * (dir < 0) - abs(dcos(dir)) * (4 * string_length(P[i][j]))) * (P[j][i] >= 0)
 							//- ((P[j][i] == 0) * abs(dcos(dir)) * (4 * string_length(P[i][j])) - 4)
-			var text_offy = dcos(dir) * EDGE_TEXT_OFFSET + ((dir > 90) + (dir < -90)) * dcos(dir)*10 + (abs(dcos(dir)) * (dir < 90) * (dir > -90) * 13) * (P[j][i] > 0)
+			var text_offy = dcos(dir) * EDGE_TEXT_OFFSET + ((dir > 90) + (dir < -90)) * dcos(dir)*10 * (P[j][i] > 0) + (abs(dcos(dir)) * (dir < 90) * (dir > -90) * 13) * (P[j][i] > 0)
 			
 			//draw_curve(ix, iy, rx, ry, degtorad(dir -90), 30)
 			draw_arrow(ix + edge_offx, iy + edge_offy, rx + edge_offx, ry + edge_offy, ARROW_WIDTH)
