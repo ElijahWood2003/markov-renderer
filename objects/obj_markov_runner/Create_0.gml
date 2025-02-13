@@ -2,9 +2,16 @@
 	
 // initializing arrays	
 S = [1, 2, 3, 4]
-P = [[0, 0, 0.2],
-	[0, 0.3, 0.6],
-	[0.4, 0, 0]
+P = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	]
 
 
@@ -51,3 +58,7 @@ ZOOM_SPEED = 15		// number of pixels moved for each scroll of mouse
 // menu vars
 MENU_COL = c_gray
 MENU_ALPHA = 0.4
+MENU_MATRIX_STARTX = room_width / 2 + 100
+MENU_MATRIX_STARTY = room_height / 2 - 100
+MENU_MATRIX_XSPACE = 25
+MENU_MATRIX_YSPACE = 20

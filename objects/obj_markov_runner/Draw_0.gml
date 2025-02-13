@@ -8,14 +8,14 @@
 draw_set_color(c_black)
 
 // draw edges first; connects each node for each node
-for(var i = 0; i < array_length(P); i++){
+for(var i = 0; i < array_length(S); i++){
 	// center of node
 	var nodex = node_cords[i][0]
 	var nodey = node_cords[i][1]
 	//var ix = CENX + dcos(DIAM_DEG * i - 90*(array_length(S) > 2))*RAD
 	//var iy = CENY + dsin(DIAM_DEG * i - 90*(array_length(S) > 2))*RAD
 	
-	for(var j = 0; j < array_length(P[0]); j++){
+	for(var j = 0; j < array_length(S); j++){
 		// don't draw connections to itself or probability == 0
 		if(i != j && P[i][j] > 0){
 			// recieving node
