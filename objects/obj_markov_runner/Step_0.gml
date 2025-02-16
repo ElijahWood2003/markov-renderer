@@ -16,6 +16,7 @@ if(mouse_check_button(mb_left) and !dragging_all){
 				index = i
 				dx = nodex - mouse_x
 				dy = nodey - mouse_y
+				select_node = i
 				break
 			}
 		}
@@ -38,6 +39,11 @@ else {
 	dragging_node = false
 }
 
+
+// removing selected node
+if(mouse_check_button_pressed(mb_right)){
+	select_node = -1
+}
 
 // dragging entire group
 if(mouse_check_button(mb_middle)){

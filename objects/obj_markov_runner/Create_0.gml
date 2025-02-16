@@ -2,8 +2,8 @@
 	
 // initializing arrays	
 S = [1, 2, 3, 4]
-P = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+P = [[0.3, 0.7, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0.2, 0, 0.8, 0.3, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -16,6 +16,7 @@ P = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 
 
 // markov vars
+select_node = -1	// index 0 -> # of nodes
 RAD = 150
 cenx = room_width / 4
 ceny = room_height / 2
@@ -24,6 +25,7 @@ node_rad = 25
 NODE_COL = c_black
 inner_node_rad = node_rad - 4
 INNER_NODE_COL = c_white
+SELECT_NODE_COL = c_red
 
 DIAM_DEG = 360 / array_length(S)
 TEXT_OFFSET_X = -4
@@ -60,5 +62,5 @@ MENU_COL = c_gray
 MENU_ALPHA = 0.4
 MENU_MATRIX_STARTX = room_width / 2 + 100
 MENU_MATRIX_STARTY = room_height / 2 - 100
-MENU_MATRIX_XSPACE = 25
+MENU_MATRIX_XSPACE = 40
 MENU_MATRIX_YSPACE = 20

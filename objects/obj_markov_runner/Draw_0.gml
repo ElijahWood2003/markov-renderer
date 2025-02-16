@@ -41,13 +41,19 @@ for(var i = 0; i < array_length(S); i++){
 							//- ((P[j][i] == 0) * abs(dcos(dir)) * (4 * string_length(P[i][j])) - 4)
 			var text_offy = dcos(dir) * EDGE_TEXT_OFFSET + ((dir > 90) + (dir < -90)) * dcos(dir)*10 * (P[j][i] > 0) + (abs(dcos(dir)) * (dir < 90) * (dir > -90) * 13) * (P[j][i] > 0)
 			
+			
+			// select color
+			if(select_node == i){
+				draw_set_color(SELECT_NODE_COL)
+			}
+			
+			
 			//draw_curve(ix, iy, rx, ry, degtorad(dir -90), 30)
 			draw_arrow(ix + edge_offx, iy + edge_offy, rx + edge_offx, ry + edge_offy, ARROW_WIDTH)
-			
 				
 			draw_text((rx - ix)/2 + ix + text_offx, (ry - iy)/2 + iy - text_offy - 10, P[i][j])
 			
-
+			draw_set_color(c_black)
 		}
 	}
 }
@@ -56,7 +62,15 @@ for(var i = 0; i < array_length(S); i++){
 for(var i = 0; i < array_length(S); i++){
 	var nodex = node_cords[i][0]
 	var nodey = node_cords[i][1]
-	draw_circle_color(nodex, nodey, node_rad, NODE_COL, NODE_COL, false)
+	
+	// select node
+	if(select_node == i){
+		draw_circle_color(nodex, nodey, node_rad, NODE_COL, SELECT_NODE_COL, false)
+	}
+	else {
+		draw_circle_color(nodex, nodey, node_rad, NODE_COL, NODE_COL, false)
+	}
+	
 	draw_circle_color(nodex, nodey, inner_node_rad, INNER_NODE_COL, INNER_NODE_COL, false)
 	
 	draw_text_color(nodex + TEXT_OFFSET_X, nodey + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
