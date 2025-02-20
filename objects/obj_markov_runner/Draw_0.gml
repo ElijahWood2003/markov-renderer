@@ -74,11 +74,13 @@ for(var i = 0; i < array_length(S); i++){
 		draw_circle_color(nodex, nodey, node_rad, NODE_COL, NODE_COL, false)
 	}
 	
-	draw_circle_color(nodex, nodey, inner_node_rad, INNER_NODE_COL, INNER_NODE_COL, false)
+	if(state == i and run_chain){
+		draw_circle_color(nodex, nodey, inner_node_rad, STATE_INNER_NODE_COL, STATE_INNER_NODE_COL, false)
+	}
+	else {
+		draw_circle_color(nodex, nodey, inner_node_rad, INNER_NODE_COL, INNER_NODE_COL, false)
+	}
 	
 	draw_text_color(nodex + TEXT_OFFSET_X, nodey + TEXT_OFFSET_Y, S[i], NODE_COL, NODE_COL, NODE_COL, NODE_COL, 1)	
 
 }
-
-
-draw_text(100, 100, run_chain)

@@ -25,6 +25,7 @@ run_speed = 2	// number of states moved per second
 run_chain = false
 state = 0
 STATE_NODE_COL = c_blue
+STATE_INNER_NODE_COL = c_ltgray
 
 node_rad = 25
 NODE_COL = c_black
