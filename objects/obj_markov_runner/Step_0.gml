@@ -101,3 +101,30 @@ if(mouse_wheel_down()){
 	}
 	// node_rad += ZOOM_SPEED / 3
 }
+
+
+// running markov chain
+if(keyboard_check_pressed(vk_space) and !run_chain ){//and check_stochastic(P, array_length(S))){
+	run_chain = true
+	alarm[0] = 60 / run_speed
+	state = 0
+}
+
+
+if(keyboard_check_pressed(vk_escape) and run_chain){
+	run_chain = false
+}
+
+
+if(run_chain and alarm[0] <= 0){
+	alarm[0] = 60 / run_speed
+	var rint = random(1)
+	var sum = 0
+	for(var i = 0; i < array_length(S); i++){
+		sum += P[state][i]
+		if(rint <= sum){
+			state = i
+			break
+		}
+	}
+}

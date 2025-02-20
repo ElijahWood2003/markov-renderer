@@ -3,9 +3,9 @@
 // initializing arrays	
 S = [1, 2, 3, 4]
 P = [[0.3, 0.7, 0, 0, 0, 0, 0, 0, 0, 0],
-	[0.2, 0, 0.8, 0.3, 0, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+	[0.1, 0, 0.8, 0.1, 0, 0, 0, 0, 0, 0],
+	[0.4, 0.4, 0, 0.2, 0, 0, 0, 0, 0, 0],
+	[0.3, 0.4, 0.3, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -20,6 +20,11 @@ select_node = -1	// index 0 -> # of nodes
 RAD = 150
 cenx = room_width / 4
 ceny = room_height / 2
+
+run_speed = 2	// number of states moved per second
+run_chain = false
+state = 0
+STATE_NODE_COL = c_blue
 
 node_rad = 25
 NODE_COL = c_black

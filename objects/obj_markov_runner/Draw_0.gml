@@ -63,8 +63,11 @@ for(var i = 0; i < array_length(S); i++){
 	var nodex = node_cords[i][0]
 	var nodey = node_cords[i][1]
 	
-	// select node
-	if(select_node == i){
+	// drawing node
+	if(state == i and run_chain){
+		draw_circle_color(nodex, nodey, node_rad, STATE_NODE_COL, STATE_NODE_COL, false)
+	}
+	else if(select_node == i){
 		draw_circle_color(nodex, nodey, node_rad, NODE_COL, SELECT_NODE_COL, false)
 	}
 	else {
@@ -77,3 +80,5 @@ for(var i = 0; i < array_length(S); i++){
 
 }
 
+
+draw_text(100, 100, run_chain)
