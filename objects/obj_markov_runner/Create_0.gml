@@ -2,7 +2,7 @@
 	
 // initializing arrays	
 S = [1, 2, 3, 4]
-P = [[0.3, 0.7, 0, 0, 0, 0, 0, 0, 0, 0],
+P = [[0.3, 0.5, 0.2, 0, 0, 0, 0, 0, 0, 0],
 	[0.1, 0, 0.8, 0.1, 0, 0, 0, 0, 0, 0],
 	[0.4, 0.4, 0, 0.2, 0, 0, 0, 0, 0, 0],
 	[0.3, 0.4, 0.3, 0, 0, 0, 0, 0, 0, 0],
@@ -68,5 +68,5 @@ MENU_COL = c_gray
 MENU_ALPHA = 0.4
 MENU_MATRIX_STARTX = room_width / 2 + 100
 MENU_MATRIX_STARTY = room_height / 2 - 100
-MENU_MATRIX_XSPACE = 40
+MENU_MATRIX_XSPACE = 60
 MENU_MATRIX_YSPACE = 20
